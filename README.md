@@ -1,90 +1,102 @@
 # ProConnect MVP
 
-A production-minded MVP for a professional networking platform (LinkedIn-style).
+A production-minded MVP for a professional networking platform (LinkedIn-style), built with:
 
-## Current status
+- **Frontend:** React + Vite
+- **Backend:** Node.js + Express
+- **Database:** MongoDB
 
-✅ Backend foundation completed (Node.js + Express + MongoDB)
+## Features (MVP)
 
-⏳ Frontend implementation (React + Vite) will be added in the next step.
+- User registration and login (JWT auth)
+- Profile view and edit (name, bio, skills)
+- Create text-only posts
+- Like/unlike posts
+- Feed with latest posts
+- Responsive, clean UI using theme colors:
+  - Background: `#E2E2E2`
+  - Primary: `#0032E7`
 
-## Backend tech stack
-
-- Node.js + Express
-- MongoDB + Mongoose
-- JWT authentication
-- Zod request validation
-- Helmet, CORS, rate limiting, and centralized error handling
-
-## Backend folder structure
+## Project structure
 
 ```bash
-server/
-  src/
-    config/
-    controllers/
-    middleware/
-    models/
-    routes/
-    utils/
-    app.js
-    server.js
-  .env.example
-  package.json
+.
+├── client/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── styles/
+│   ├── .env.example
+│   └── package.json
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── utils/
+│   ├── .env.example
+│   └── package.json
+└── README.md
 ```
 
-## Implemented API routes
+## Backend API
 
 Base URL: `http://localhost:5000/api`
 
-### Health
 - `GET /health`
-
-### Auth
 - `POST /auth/register`
 - `POST /auth/login`
 - `GET /auth/me` (protected)
-
-### Profile
 - `GET /profile/me` (protected)
 - `PUT /profile/me` (protected)
 - `GET /profile/:userId` (protected)
-
-### Posts
 - `GET /posts/feed` (protected)
 - `POST /posts` (protected)
 - `PATCH /posts/:postId/like` (protected)
 
-## Setup instructions (backend)
-
-1. Install dependencies:
-   ```bash
-   cd server
-   npm install
-   ```
-2. Create env file:
-   ```bash
-   cp .env.example .env
-   ```
-3. Update env values in `.env`.
-4. Start dev server:
-   ```bash
-   npm run dev
-   ```
-
 ## Environment variables
 
-`server/.env.example`
+### `server/.env`
 
-- `PORT` - server port (default: `5000`)
-- `MONGODB_URI` - Mongo connection string
-- `JWT_SECRET` - JWT signing secret
-- `JWT_EXPIRES_IN` - token expiry (example: `7d`)
-- `CLIENT_ORIGIN` - frontend origin for CORS
-- `NODE_ENV` - environment (`development`, `production`, `test`)
+Use `server/.env.example` as template.
 
----
+- `PORT=5000`
+- `MONGODB_URI=mongodb://127.0.0.1:27017/networking_mvp`
+- `JWT_SECRET=replace-with-strong-secret`
+- `JWT_EXPIRES_IN=7d`
+- `CLIENT_ORIGIN=http://localhost:5173`
+- `NODE_ENV=development`
 
-Next: Frontend setup with React (Vite), responsive UI, feed and profile pages, and color theme:
-- Background: `#E2E2E2`
-- Primary: `#0032E7`
+### `client/.env`
+
+Use `client/.env.example` as template.
+
+- `VITE_API_URL=http://localhost:5000/api`
+
+## Setup instructions
+
+### 1) Backend
+
+```bash
+cd server
+npm install
+cp .env.example .env
+npm run dev
+```
+
+### 2) Frontend
+
+Open a second terminal:
+
+```bash
+cd client
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Frontend runs at `http://localhost:5173`.
