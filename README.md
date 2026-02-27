@@ -1,21 +1,102 @@
-# 💫 About Me:
-Hi 👋, I'm WarisChoudhary1786<br><br>Aspiring AI / Machine Learning Developer 🚀  <br><br>## 👨‍💻 About Me<br>- 🎯 Focused on AI / Machine Learning<br>- 📊 Strong foundation in Python, NumPy & Pandas<br>- 🤖 Learning Machine Learning step by step<br>- 💡 Interested in Data Analysis & AI-based projects<br><br>## 🛠 Skills<br>- Python<br>- NumPy<br>- Pandas<br>- Machine Learning (Basics)<br>- Jupyter Notebook<br>- Git & GitHub<br><br>## 📌 Projects<br>- Data Analysis using Pandas<br>- Machine Learning practice projects<br><br>## 📚 Learning Roadmap<br>- Python ✅<br>- NumPy ✅<br>- Pandas ✅<br>- Machine Learning 🔄<br><br>## 📫 Connect with Me<br>- GitHub: https://github.com/warischoudhary1786<br>
+# ProConnect MVP
 
+A production-minded MVP for a professional networking platform (LinkedIn-style), built with:
 
-## 🌐 Socials:
-[![Instagram](https://img.shields.io/badge/Instagram-%23E4405F.svg?logo=Instagram&logoColor=white)](https://instagram.com/https://www.instagram.com/waris_choudhary1786/?utm_source=ig_web_button_share_sheet) [![Twitch](https://img.shields.io/badge/Twitch-%239146FF.svg?logo=Twitch&logoColor=white)](https://twitch.tv/https://teams.live.com/l/message/19:uni01_fn4yokqvg74xylz73hdohzsccq43r2shbqe3r2a4avgite6ieo2a@thread.v2/1767345825153?context=%7B%22contextType%22%3A%22chat%22%7D) [![email](https://img.shields.io/badge/Email-D14836?logo=gmail&logoColor=white)](mailto:mubbsairchoudhary@gmail.com) 
+- **Frontend:** React + Vite
+- **Backend:** Node.js + Express
+- **Database:** MongoDB
 
-# 💻 Tech Stack:
-![Matplotlib](https://img.shields.io/badge/Matplotlib-%23ffffff.svg?style=for-the-badge&logo=Matplotlib&logoColor=black) ![NumPy](https://img.shields.io/badge/numpy-%23013243.svg?style=for-the-badge&logo=numpy&logoColor=white) ![Pandas](https://img.shields.io/badge/pandas-%23150458.svg?style=for-the-badge&logo=pandas&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=for-the-badge&logo=PyTorch&logoColor=white) ![TensorFlow](https://img.shields.io/badge/TensorFlow-%23FF6F00.svg?style=for-the-badge&logo=TensorFlow&logoColor=white) ![mlflow](https://img.shields.io/badge/mlflow-%23d9ead3.svg?style=for-the-badge&logo=numpy&logoColor=blue)
-# 📊 GitHub Stats:
-![](https://github-readme-stats.vercel.app/api?username=warischoudhary1786&theme=dark&hide_border=false&include_all_commits=false&count_private=false)<br/>
-![](https://nirzak-streak-stats.vercel.app/?user=warischoudhary1786&theme=dark&hide_border=false)<br/>
-![](https://github-readme-stats.vercel.app/api/top-langs/?username=warischoudhary1786&theme=dark&hide_border=false&include_all_commits=false&count_private=false&layout=compact)
+## Features (MVP)
 
-## 🏆 GitHub Trophies
-![](https://github-profile-trophy.vercel.app/?username=warischoudhary1786&theme=radical&no-frame=false&no-bg=true&margin-w=4)
+- User registration and login (JWT auth)
+- Profile view and edit (name, bio, skills)
+- Create text-only posts
+- Like/unlike posts
+- Feed with latest posts
+- Responsive, clean UI using theme colors:
+  - Background: `#E2E2E2`
+  - Primary: `#0032E7`
 
----
-[![](https://visitcount.itsvg.in/api?id=warischoudhary1786&icon=0&color=0)](https://visitcount.itsvg.in)
+## Project structure
 
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
+```bash
+.
+├── client/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   └── styles/
+│   ├── .env.example
+│   └── package.json
+├── server/
+│   ├── src/
+│   │   ├── config/
+│   │   ├── controllers/
+│   │   ├── middleware/
+│   │   ├── models/
+│   │   ├── routes/
+│   │   └── utils/
+│   ├── .env.example
+│   └── package.json
+└── README.md
+```
+
+## Backend API
+
+Base URL: `http://localhost:5000/api`
+
+- `GET /health`
+- `POST /auth/register`
+- `POST /auth/login`
+- `GET /auth/me` (protected)
+- `GET /profile/me` (protected)
+- `PUT /profile/me` (protected)
+- `GET /profile/:userId` (protected)
+- `GET /posts/feed` (protected)
+- `POST /posts` (protected)
+- `PATCH /posts/:postId/like` (protected)
+
+## Environment variables
+
+### `server/.env`
+
+Use `server/.env.example` as template.
+
+- `PORT=5000`
+- `MONGODB_URI=mongodb://127.0.0.1:27017/networking_mvp`
+- `JWT_SECRET=replace-with-strong-secret`
+- `JWT_EXPIRES_IN=7d`
+- `CLIENT_ORIGIN=http://localhost:5173`
+- `NODE_ENV=development`
+
+### `client/.env`
+
+Use `client/.env.example` as template.
+
+- `VITE_API_URL=http://localhost:5000/api`
+
+## Setup instructions
+
+### 1) Backend
+
+```bash
+cd server
+npm install
+cp .env.example .env
+npm run dev
+```
+
+### 2) Frontend
+
+Open a second terminal:
+
+```bash
+cd client
+npm install
+cp .env.example .env
+npm run dev
+```
+
+Frontend runs at `http://localhost:5173`.
